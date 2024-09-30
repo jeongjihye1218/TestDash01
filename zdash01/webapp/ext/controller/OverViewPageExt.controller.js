@@ -5,6 +5,7 @@ sap.ui.define([
     // controller for custom filter, navigation param, action(quick view and global filter), navigation target 
     // controller class name can be like app.ovp.ext.CustomFilter where app.ovp can be replaced with your application namespace
     return {
+    // test    fffgjkjdlk
         getCustomFilters: function () {
             /* This method returns a filter object to the OVP library. If there are multiple filters, they should 
             be clubbed into single Filter object. */		
