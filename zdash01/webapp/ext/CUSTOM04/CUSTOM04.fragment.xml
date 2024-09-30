@@ -1,0 +1,29 @@
+<core:FragmentDefinition 
+xmlns="sap.m" 
+xmlns:core="sap.ui.core" 
+xmlns:ovp="sap.ovp.ui"
+xmlns:smartTable="sap.ui.comp.smarttable"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+<Dialog id="CustomDialog2">
+    <smartTable:SmartTable id="idSmartTable_2" entitySet="BAPSTSet"  tableType="Table"
+                                                   useVariantManagement="false" useTablePersonalisation="true" header="상세"
+                                                    showRowCount="true" persistencyKey="SmartTableAnalytical_Explored" enableAutoBinding="true"                        
+                                                    smartFilterId="idSfb" 
+                                                    
+                                         
+                                                
+                            >
+
+                            <smartTable:layoutData>
+                                <FlexItemData id="_IDGenFlexItemData2" growFactor="1" baseSize="0%"/>
+                            </smartTable:layoutData>
+                            
+    </smartTable:SmartTable>     
+    
+    <beginButton>
+        <Button id="_IDGenButton" text="OK" press="onDialogClose"/>
+    </beginButton>
+</Dialog>       
+</core:FragmentDefinition>

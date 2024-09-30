@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="1.0" xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns:sap="http://www.sap.com/Protocols/SAPData">
+    <edmx:DataServices m:DataServiceVersion="2.0">
+        <Schema Namespace="ZPJ_DASHBOARD_1910275_SRV" xml:lang="ko" sap:schema-version="1" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+            <Annotation Term="Core.SchemaVersion" String="1.0.0" xmlns="http://docs.oasis-open.org/odata/ns/edm"/>
+            <EntityType Name="BAPST" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Grdat"/>
+                    <PropertyRef Name="SecurityId"/>
+                    <PropertyRef Name="SecurityAccount"/>
+                    <PropertyRef Name="DealNumber"/>
+                </Key>
+                <Property Name="Grdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="기준일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityId" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="유가증권 클래스" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityAccount" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="유가증권 계정" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealNumber" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="거래" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssetCodeT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="자산 구분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValAmt" Type="Edm.Decimal" Nullable="false" Precision="22" Scale="3" sap:unicode="false" sap:unit="BookValCurr" sap:label="장부금액(원화)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="평가 통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityType Name="BAPST_M" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Grdat"/>
+                    <PropertyRef Name="GrdatM"/>
+                    <PropertyRef Name="SecurityId"/>
+                    <PropertyRef Name="SecurityAccount"/>
+                    <PropertyRef Name="DealNumber"/>
+                </Key>
+                <Property Name="Grdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="기준일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrdatM" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="문자 필드(길이: 10)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityId" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="유가증권 클래스" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityAccount" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="유가증권 계정" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealNumber" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="거래" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssetCodeT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="자산 구분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValAmt" Type="Edm.Decimal" Nullable="false" Precision="22" Scale="3" sap:unicode="false" sap:unit="BookValCurr" sap:label="장부금액(원화)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="평가 통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityType Name="EXCHANGE_RATE" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Grdat"/>
+                    <PropertyRef Name="FCurr"/>
+                    <PropertyRef Name="TCurr"/>
+                </Key>
+                <Property Name="Grdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:display-format="Date" sap:unicode="false" sap:label="일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="FCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="TCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+                <Property Name="Rate" Type="Edm.Decimal" Nullable="false" Precision="7" Scale="2" sap:unicode="false" sap:label="매매기준율" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+            </EntityType>
+            <EntityType Name="CUSTOM_BAPST_M" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Grdat"/>
+                    <PropertyRef Name="GrdatM"/>
+                    <PropertyRef Name="SecurityId"/>
+                    <PropertyRef Name="SecurityAccount"/>
+                    <PropertyRef Name="DealNumber"/>
+                </Key>
+                <Property Name="Grdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="기준일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrdatM" Type="Edm.String" Nullable="false" MaxLength="10" sap:text="text" sap:unicode="false" sap:label="MMMMMM" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityId" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="유가증권 클래스" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="SecurityAccount" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="유가증권 계정" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="DealNumber" Type="Edm.String" Nullable="false" MaxLength="13" sap:unicode="false" sap:label="거래" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssetCodeT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="자산 구분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValAmt" Type="Edm.Decimal" Nullable="false" Precision="22" Scale="3" sap:unicode="false" sap:unit="BookValCurr" sap:label="장부금액(원화)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="평가 통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityType Name="STACK_BAPST_M" sap:content-version="1">
+                <Key>
+                    <PropertyRef Name="Grdat"/>
+                    <PropertyRef Name="GrdatM"/>
+                    <PropertyRef Name="AssetCodeT"/>
+                </Key>
+                <Property Name="Grdat" Type="Edm.DateTime" Nullable="false" Precision="7" sap:unicode="false" sap:label="기준일자" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="GrdatM" Type="Edm.String" Nullable="false" MaxLength="10" sap:unicode="false" sap:label="문자 필드(길이: 10)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="AssetCodeT" Type="Edm.String" Nullable="false" MaxLength="30" sap:unicode="false" sap:label="자산 구분" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValAmt" Type="Edm.Decimal" Nullable="false" Precision="22" Scale="3" sap:unicode="false" sap:unit="BookValCurr" sap:label="장부금액(원화)" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false"/>
+                <Property Name="BookValCurr" Type="Edm.String" Nullable="false" MaxLength="5" sap:unicode="false" sap:label="평가 통화" sap:creatable="false" sap:updatable="false" sap:sortable="false" sap:filterable="false" sap:semantics="currency-code"/>
+            </EntityType>
+            <EntityContainer Name="ZPJ_DASHBOARD_1910275_SRV_Entities" m:IsDefaultEntityContainer="true" sap:supported-formats="atom json xlsx">
+                <EntitySet Name="BAPSTSet" EntityType="ZPJ_DASHBOARD_1910275_SRV.BAPST" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="BAPST_MSet" EntityType="ZPJ_DASHBOARD_1910275_SRV.BAPST_M" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="EXCHANGE_RATESet" EntityType="ZPJ_DASHBOARD_1910275_SRV.EXCHANGE_RATE" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="CUSTOM_BAPST_MSet" EntityType="ZPJ_DASHBOARD_1910275_SRV.CUSTOM_BAPST_M" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+                <EntitySet Name="STACK_BAPST_MSet" EntityType="ZPJ_DASHBOARD_1910275_SRV.STACK_BAPST_M" sap:creatable="false" sap:updatable="false" sap:deletable="false" sap:pageable="false" sap:content-version="1"/>
+            </EntityContainer>
+            <atom:link rel="self" href="http://noams41.noaats.com:8045/sap/opu/odata/sap/ZPJ_DASHBOARD_1910275_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+            <atom:link rel="latest-version" href="http://noams41.noaats.com:8045/sap/opu/odata/sap/ZPJ_DASHBOARD_1910275_SRV/$metadata" xmlns:atom="http://www.w3.org/2005/Atom"/>
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

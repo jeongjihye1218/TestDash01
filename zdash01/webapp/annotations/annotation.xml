@@ -1,0 +1,436 @@
+<edmx:Edmx xmlns:edmx="http://docs.oasis-open.org/odata/ns/edmx" Version="4.0">
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/Common.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.Common.v1" Alias="Common"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="https://sap.github.io/odata-vocabularies/vocabularies/UI.xml">
+        <edmx:Include Namespace="com.sap.vocabularies.UI.v1" Alias="UI"/>
+    </edmx:Reference>
+    <edmx:Reference Uri="/sap/opu/odata/sap/ZPJ_DASHBOARD_1910275_SRV/$metadata">
+        <edmx:Include Namespace="ZPJ_DASHBOARD_1910275_SRV"/>
+    </edmx:Reference>
+    <edmx:DataServices>
+        <Schema xmlns="http://docs.oasis-open.org/odata/ns/edm" Namespace="local">
+            <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.BAPST">
+                <Annotation Term="UI.Chart" Qualifier="CHART_BAPST">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Donut"/>
+                        <PropertyValue Property="Title" String="자산비중"/>
+                        <PropertyValue Property="Description" String="자산비중"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>AssetCodeT</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="AssetCodeT" />                                     
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>                                         
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>BookValAmt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="CHART_BAPST">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#CHART_BAPST</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="AssetCodeT"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="CHART_BAPST">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="BookValAmt"/>
+                    </Record>
+                </Annotation>          
+                <Annotation Term="UI.DataPoint" Qualifier="LIST_CUSTOM_BAPST">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Critical"/>
+                        <PropertyValue Property="Value" Path="Grdat"/>
+                    </Record>
+                </Annotation>
+
+               
+
+            </Annotations>
+            
+            <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.BAPST_M">                
+                <Annotation Term="UI.Chart" Qualifier="CHART_BAPST_M">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                        <PropertyValue Property="Title" String="월별 운용현황"/>
+                        <PropertyValue Property="Description" String="CHART_BAPST_M"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>GrdatM</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>BookValAmt</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.PresentationVariant" Qualifier="CHART_BAPST_M">
+                    <Record>
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#CHART_BAPST_M</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="GrdatM"/>
+                                    <PropertyValue Property="Descending" Bool="true"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                <Annotation Term="UI.DataPoint" Qualifier="CHART_BAPST_M">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="BookValAmt"/>
+                    </Record>
+                </Annotation>
+
+                                            
+            </Annotations>   
+
+            <!-- Add custom labels for Measures and Dimensions -->
+            <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.BAPST_M/BookValAmt">
+                <Annotation Term="com.sap.vocabularies.Common.v1.Label" String="장부금액(원화)"/>
+            </Annotations>
+
+
+           
+            <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.EXCHANGE_RATE">
+               
+                <Annotation Term="UI.Chart" Qualifier="CHART_EX_RATE">
+                    <Record Type="UI.ChartDefinitionType">
+                        <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Line"/>
+                        <PropertyValue Property="Title" String="환율"/>
+                        <PropertyValue Property="Dimensions">
+                            <Collection>
+                                <PropertyPath>Grdat</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="DimensionAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartDimensionAttributeType">
+                                    <PropertyValue Property="Dimension" PropertyPath="Grdat"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>                     
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="Measures">
+                            <Collection>
+                                <PropertyPath>Rate</PropertyPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="MeasureAttributes">
+                            <Collection>
+                                <Record Type="UI.ChartMeasureAttributeType">
+                                    <PropertyValue Property="Measure" PropertyPath="Rate"/>
+                                    <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                        
+                    </Record>
+                </Annotation>
+
+                <Annotation Term="UI.PresentationVariant" Qualifier="CHART_EX_RATE">
+                    <Record>
+                        
+                        <PropertyValue Property="Visualizations">
+                            <Collection>
+                                <AnnotationPath>@UI.Chart#CHART_EX_RATE</AnnotationPath>
+                            </Collection>
+                        </PropertyValue>
+                        <PropertyValue Property="SortOrder">
+                            <Collection>
+                                <Record Type="Common.SortOrderType">
+                                    <PropertyValue Property="Property" PropertyPath="Grdat"/>
+                                    <PropertyValue Property="Descending" Bool="false"/>
+                                </Record>
+                            </Collection>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+                
+                <Annotation Term="UI.DataPoint" Qualifier="CHART_EX_RATE">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Value" Path="Rate"/> 
+                            <PropertyValue Property="ValueFormat">
+                                <Record Type="UI.NumberFormat">
+                                    <PropertyValue Property="ScaleFactor" Decimal="1" />
+                                    <PropertyValue Property="NumberOfFractionalDigits" Int="2" />
+                                </Record>
+                            </PropertyValue>
+                    </Record>
+                </Annotation>
+               
+                <Annotation Term="UI.LineItem" Qualifier="LIST_EX_RATE">
+                    <Collection>
+                       
+                         <Record Type="UI.DataField">
+                            <PropertyValue Property="Label" String="FCurr" />
+                            <PropertyValue Property="Value" Path="FCurr" />
+                         </Record>                     
+                         <Record Type="UI.DataFieldForAnnotation">
+                            <PropertyValue Property="Label" String="Rate" />
+                            <PropertyValue Property="Target" AnnotationPath="@com.sap.vocabularies.UI.v1.DataPoint#Rate" />
+                         </Record>   
+
+                                 
+                    </Collection>
+                </Annotation>
+
+                <Annotation Term="UI.DataPoint" Qualifier="Rate">
+                    <Record Type="UI.DataPointType">
+                        <PropertyValue Property="Criticality" EnumMember="UI.CriticalityType/Information"/>
+                        <PropertyValue Property="Value" Path="Rate"/>
+                        <PropertyValue Property="ValueFormat">
+                            <Record Type="UI.NumberFormat">
+                                <PropertyValue Property="ScaleFactor" Decimal="1"/>
+                                <PropertyValue Property="NumberOfFractionalDigits" Int="2"/>
+                            </Record>
+                        </PropertyValue>
+                    </Record>
+                </Annotation>
+            </Annotations>
+
+
+            <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.CUSTOM_BAPST_M">
+            <Annotation Term="UI.Chart" Qualifier="CUSTOM_CHART_BAPST_M">                    
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                    <PropertyValue Property="Title" String="월별 운용현황"/>
+                    <PropertyValue Property="Description" String="CUSTOM_CHART_BAPST_M"/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>GrdatM</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="DimensionAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>BookValAmt</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="MeasureAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartMeasureAttributeType">
+                                <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.Chart" Qualifier="CUSTOM03">                    
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
+                    <PropertyValue Property="Title" String="월별 운용현황"/>
+                    <PropertyValue Property="Description" String="CUSTOM_CHART_BAPST_M"/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>GrdatM</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="DimensionAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>BookValAmt</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="MeasureAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartMeasureAttributeType">
+                                <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                            </Record>                           
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            
+        </Annotations>
+
+
+        <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.CUSTOM_BAPST_M">
+            <Annotation Term="UI.Chart" Qualifier="CUSTOM_CHART_BAPST_M">                    
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/Column"/>
+                    <PropertyValue Property="Title" String="월별 운용현황"/>
+                    <PropertyValue Property="Description" String="CUSTOM_CHART_BAPST_M"/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>GrdatM</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="DimensionAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>BookValAmt</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="MeasureAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartMeasureAttributeType">
+                                <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+
+            <Annotation Term="UI.Chart" Qualifier="CUSTOM03">                    
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
+                    <PropertyValue Property="Title" String="월별 운용현황"/>
+                    <PropertyValue Property="Description" String="CUSTOM_CHART_BAPST_M"/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>GrdatM</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="DimensionAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>BookValAmt</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="MeasureAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartMeasureAttributeType">
+                                <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                            </Record>                           
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            
+        </Annotations>
+
+
+
+
+        <Annotations Target="ZPJ_DASHBOARD_1910275_SRV.STACK_BAPST_M">
+            <Annotation Term="UI.Chart" Qualifier="CUSTOM03">                    
+                <Record Type="UI.ChartDefinitionType">
+                    <PropertyValue Property="ChartType" EnumMember="UI.ChartType/ColumnStacked"/>
+                    <PropertyValue Property="Title" String="월별 운용현황"/>
+                    <PropertyValue Property="Description" String=""/>
+                    <PropertyValue Property="Dimensions">
+                        <Collection>
+                            <PropertyPath>GrdatM</PropertyPath>
+                            <PropertyPath>AssetCodeT</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="DimensionAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="GrdatM"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Category"/>
+                            </Record>
+                            <Record Type="UI.ChartDimensionAttributeType">
+                                <PropertyValue Property="Dimension" PropertyPath="AssetCodeT"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartDimensionRoleType/Series"/>
+                            </Record>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="Measures">
+                        <Collection>
+                            <PropertyPath>BookValAmt</PropertyPath>
+                        </Collection>
+                    </PropertyValue>
+                    <PropertyValue Property="MeasureAttributes">
+                        <Collection>
+                            <Record Type="UI.ChartMeasureAttributeType">
+                                <PropertyValue Property="Measure" PropertyPath="BookValAmt"/>
+                                <PropertyValue Property="Role" EnumMember="UI.ChartMeasureRoleType/Axis1"/>
+                            </Record>                           
+                        </Collection>
+                    </PropertyValue>
+                </Record>
+            </Annotation>
+            
+        </Annotations>
+
+        </Schema>
+    </edmx:DataServices>
+</edmx:Edmx>

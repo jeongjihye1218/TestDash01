@@ -1,0 +1,20 @@
+<core:FragmentDefinition 
+xmlns="sap.m" 
+xmlns:core="sap.ui.core" 
+xmlns:ovp="sap.ovp.ui"
+xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+xmlns:smartChart="sap.ui.comp.smartchart"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1">
+            <!-- Card's Content area code goes here -->
+
+    <smartChart:SmartChart id="CUSTOM06" entitySet="BAPSTSet" 
+                    useChartPersonalisation="true" header="자산구분TEST" showFullScreenButton="true" selectionMode="Multi" showChartTooltip="true"
+                    showDrillBreadcrumbs="true" showDetailsButton="true" showDrillButtons="true" showSemanticNavigationButton="true"
+                    smartFilterId="idSfb"  chartBindingPath="/BAPSTSet" enableAutoBinding="true"
+                    height="600px" 
+                    data:chartQualifier="CHART_BAPST"                                                                                                                                                       
+    >
+
+
+    </smartChart:SmartChart>
+</core:FragmentDefinition>

@@ -1,0 +1,264 @@
+{
+    "_version": "1.42.0",
+    "sap.app": {
+        "id": "zdash01",
+        "type": "application",
+        "i18n": "i18n/i18n.properties",
+        "applicationVersion": {
+            "version": "0.0.1"
+        },
+        "title": "{{appTitle}}",
+        "description": "{{appDescription}}",
+        "resources": "resources.json",
+        "sourceTemplate": {
+            "id": "@sap/generator-fiori:ovp",
+            "version": "1.14.4",
+            "toolsId": "636a5a88-2600-40ef-92fe-ffbd4b2cabc3"
+        },
+        "dataSources": {
+            "mainService": {
+                "uri": "/sap/opu/odata/sap/ZPJ_DASHBOARD_1910275_SRV/",
+                "type": "OData",
+                "settings": {
+                    "annotations": [
+                        "annotation"
+                    ],
+                    "localUri": "localService/metadata.xml",
+                    "odataVersion": "2.0"
+                }
+            },
+            "annotation": {
+                "type": "ODataAnnotation",
+                "uri": "annotations/annotation.xml",
+                "settings": {
+                    "localUri": "annotations/annotation.xml"
+                }
+            }
+        }
+    },
+    "sap.ui": {
+        "technology": "UI5",
+        "icons": {
+            "icon": "",
+            "favIcon": "",
+            "phone": "",
+            "phone@2": "",
+            "tablet": "",
+            "tablet@2": ""
+        },
+        "deviceTypes": {
+            "desktop": true,
+            "tablet": true,
+            "phone": true
+        }
+    },
+    "sap.ui5": {
+        "flexEnabled": true,
+        "dependencies": {
+            "minUI5Version": "1.128.1",
+            "libs": {
+                "sap.m": {},
+                "sap.ui.core": {},
+                "sap.ushell": {},
+                "sap.f": {},
+                "sap.ui.comp": {},
+                "sap.ui.generic.app": {},
+                "sap.suite.ui.generic.template": {},
+                "sap.ovp": {},
+                "sap.ui.rta": {},
+                "sap.ui.layout": {}
+            }
+        },
+        "contentDensities": {
+            "compact": true,
+            "cozy": true
+        },
+        "models": {
+            "i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "settings": {
+                    "bundleName": "zdash01.i18n.i18n"
+                }
+            },
+            "mainModel": {
+                "dataSource": "mainService",
+                "preload": true,
+                "settings": {
+                    "defaultBindingMode": "TwoWay",
+                    "defaultCountMode": "Inline",
+                    "refreshAfterChange": false,
+                    "metadataUrlParams": {
+                        "sap-value-list": "none"
+                    }
+                }
+            },
+            "@i18n": {
+                "type": "sap.ui.model.resource.ResourceModel",
+                "uri": "i18n/i18n.properties"
+            }
+        },
+        "resources": {
+            "css": []
+        },
+        "routing": {
+            "config": {},
+            "routes": [],
+            "targets": {}
+        },
+        "extends": {
+            "extensions": {
+                "sap.ui.controllerExtensions": {
+                    "sap.ovp.app.Main": {
+                        "controllerName": "zdash01.ext.controller.OverViewPageExt"
+                    }
+                },
+                "sap.ui.viewExtensions": {
+                    "sap.ovp.app.Main": {
+                        "SmartFilterBarControlConfigurationExtension|BAPST": {
+                            "className": "sap.ui.core.Fragment",
+                            "fragmentName": "zdash01.ext.fragments.Frag01",
+                            "type": "XML"
+                        }
+                    }
+                }
+            }
+        }
+    },
+    "sap.ovp": {
+        "globalFilterModel": "mainModel",
+        "globalFilterEntityType": "BAPST",
+        "containerLayout": "resizable",
+        "enableLiveFilter": false,
+        "considerAnalyticalParameters": false,
+        "useDateRangeType": true,
+        "cards": {
+            "CHART_BAPST": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CHART_BAPST",
+                    "entitySet": "BAPSTSet",
+                    "title": "CHART_BAPST",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#CHART_BAPST",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CHART_BAPST"
+                }
+            },
+            "CHART_BAPST_M": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "itemText": "BookValAmt : 장부금액",
+                    "enableLocaleCurrencyFormatting": true,
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CHART_BAPST_M",
+                    "valueSelectionInfo": "",
+                    "entitySet": "BAPST_MSet",
+                    "title": "CHART_BAPST_M",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#CHART_BAPST_M",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CHART_BAPST_M"
+                }
+            },
+            "CHART_EX_RATE": {
+                "template": "sap.ovp.cards.charts.analytical",
+                "model": "mainModel",
+                "settings": {
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CHART_EX_RATE",
+                    "entitySet": "EXCHANGE_RATESet",
+                    "title": "환율",
+                    "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#CHART_EX_RATE",
+                    "presentationAnnotationPath": "com.sap.vocabularies.UI.v1.PresentationVariant#CHART_EX_RATE",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#CHART_EX_RATE"
+                }
+            },
+            "LIST_EX_RATE": {
+                "template": "sap.ovp.cards.list",
+                "model": "mainModel",
+                "settings": {
+                    "listFlavor": "standard",
+                    "listType": "extended",
+                    "entitySet": "EXCHANGE_RATESet",
+                    "title": "환율",
+                    "sortBy": "Grdat",
+                    "sortOrder": "ascending",
+                    "defaultSpan": "auto",
+                    "tabs": [
+                        {
+                            "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#LIST_EX_RATE",
+                            "selectionAnnotationPath": "com.sap.vocabularies.UI.v1.SelectionVariant#LIST_EX_RATE",
+                            "identificationAnnotationPath": "com.sap.vocabularies.UI.v1.Identification#LIST_EX_RATE"
+                        }
+                    ],
+                    "showLineItemDetail": true,
+                    "showSortingInHeader": true
+                }
+            },
+            "LIST_CUSTOM_BAPST": {
+                "template": "sap.ovp.cards.table",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "BAPSTSet",
+                    "title": "LIST_CUSTOM_BAPST",
+                    "tabs": [
+                        {
+                            "dataPointAnnotationPath": "com.sap.vocabularies.UI.v1.DataPoint#LIST_CUSTOM_BAPST"
+                        }
+                    ]
+                }
+            },
+            "CUSTOM01": {
+                "template": "zdash01.ext.CUSTOM",
+                "settings": {
+                    "title": "ZZZZ",
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CUSTOM_CHART_BAPST_M",
+                    "showRefresh": true,
+                    "entitySet": "CUSTOM_BAPST_MSet"
+                },
+                "model": "mainModel"
+            },
+            "CUSTOM02": {
+                "template": "zdash01.ext.CUSTOM02",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "BAPSTSet",
+                    "showRefresh": true,
+                    "title": "CustomCard",
+                    "annotationPath": "com.sap.vocabularies.UI.v1.LineItem#CUSTOM02"
+                }
+            },
+            "CUSTOM03": {
+                "template": "zdash01.ext.CUSTOM03",
+                "model": "mainModel",
+                "settings": {
+                    "entitySet": "STACK_BAPST_MSet",
+                    "showRefresh": true,
+                    "chartAnnotationPath": "com.sap.vocabularies.UI.v1.Chart#CUSTOM03",
+                    "title": "CustomCard"
+                }
+            },
+            "CUSTOM04": {
+                "template": "zdash01.ext.CUSTOM04",
+                "settings": {
+                    "title": "CustomCard"
+                }
+            },
+            "CUSTOM05": {
+                "template": "zdash01.ext.CUSTOM05",
+                "settings": {
+                    "title": "CustomCard"
+                }
+            },
+            "CUSTOM06": {
+                "template": "zdash01.ext.CUSTOM06",
+                "settings": {
+                    "title": "CustomCard"
+                }
+            }
+        },
+        "chartSettings": {
+            "showDataLabel": true
+        }
+    },
+    "sap.fiori": {
+        "registrationIds": [],
+        "archeType": "analytical"
+    }
+}

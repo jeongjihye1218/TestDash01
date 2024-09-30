@@ -1,0 +1,28 @@
+<core:FragmentDefinition xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+xmlns:core="sap.ui.core" xmlns:ovp="sap.ovp.ui"
+xmlns:template="http://schemas.sap.com/sapui5/extension/sap.ui.core.template/1"
+xmlns:data="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+xmlns:smartChart="sap.ui.comp.smartchart"
+xmlns:chart="sap.chart"
+xmlns:sl="sap.ui.comp.navpopover"
+>
+            <!-- Card's Content area code goes here -->
+
+    <smartChart:SmartChart id="CUSTOM03" entitySet="STACK_BAPST_MSet" 
+                    useChartPersonalisation="true" header="STACK" showFullScreenButton="true" selectionMode="Multi" showChartTooltip="true"
+                    showDrillBreadcrumbs="true" showDetailsButton="true" showDrillButtons="true" showSemanticNavigationButton="true"
+                    smartFilterId="idSfb"  chartBindingPath="/STACK_BAPST_MSet" enableAutoBinding="true"
+                    height="600px" 
+                    data:chartQualifier="CUSTOM03"                                                                
+                                                                                           
+    >
+
+    <chart:Chart id="idCUSTOM03" width="100%" 
+    selectData="onClick" deselectData="onDeselect" renderComplete="onRenderComplete" 
+     >           
+  </chart:Chart>
+
+
+    </smartChart:SmartChart>
+
+</core:FragmentDefinition>
